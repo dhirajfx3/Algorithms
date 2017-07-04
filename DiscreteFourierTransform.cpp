@@ -1,3 +1,52 @@
+#define vector ve
+#define complex num
+template <typename y>
+ve<y> operator*(const  ve<y> &A, const   ve<y> &B)
+{
+	ve<y> R(A);
+	for (int i = 0; i < B.size(); i++)
+		R[i] = A[i] * B[i];
+	return R;
+}
+struct complex
+{
+	float2 re, im;
+public:
+	complex() :re(0), im(0) {}
+	complex(float2 R, float2 I) :re(R), im(I) {}
+	complex  operator* (const complex  &nu) const
+	{
+		return complex(re*nu.re - im*nu.im, im*nu.re + re*nu.im);
+	}
+	complex const operator+(const complex  &nu) const
+	{
+		return complex(re + nu.re, im + nu.im);
+	}
+	complex   operator-(const complex  &nu) const
+	{
+		return complex(re - nu.re, im - nu.im);
+	}
+	complex(float2 angle) :re(cos(angle)), im(sin(angle)) {}
+	complex& operator*=(const complex &n)
+	{
+		float2 re_cpy = (re*n.re - im*n.im), im_cpy = (im*n.re + re*n.im);
+		re = re_cpy;
+		im = im_cpy;
+		return *this;
+	}
+	complex& operator-=(const complex &n)
+	{
+		re -= n.re;
+		im -= n.im;
+		return *this;
+	}
+	complex& operator+=(const complex &n)
+	{
+		re += n.re;
+		im += n.im;
+		return *this;
+	}
+};
 template<typename my_type>
 class DiscreteFourierTransform
 {
