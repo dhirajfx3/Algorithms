@@ -1,5 +1,7 @@
 #define ve vector
 #define complex num
+#define float2 long double
+#define pb push_back
 template <typename y>
 ve<y> operator*(const  ve<y> &A, const   ve<y> &B)
 {
