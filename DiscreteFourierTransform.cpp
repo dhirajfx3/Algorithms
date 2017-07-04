@@ -1,4 +1,4 @@
-#define vector ve
+#define ve vector
 #define complex num
 template <typename y>
 ve<y> operator*(const  ve<y> &A, const   ve<y> &B)
