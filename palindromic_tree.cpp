@@ -59,7 +59,7 @@ public:
 			return;
 		}
 		int temp = suffix_link[curr];
-		while (edges[temp].find(c) == edges[temp].end())
+		while (c != S[pos - len[temp] - 1])
 		{
 			temp = suffix_link[temp];
 		}
