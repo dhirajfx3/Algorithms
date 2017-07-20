@@ -1,3 +1,11 @@
+#include <iostream>
+#include <vector>
+#include <map>
+#include <string>
+
+#define ve vector
+#define pb push_back
+using namespace std;
 class palindrome
 {
 	string S;
@@ -29,7 +37,7 @@ public:
 		edges.pb(map<char, int>());
 		suffix_link.pb(0);
 		++size;
-  }
+  	}
 	void add(char c)
 	{
 		while (c != S[pos - len[curr] - 1] )
@@ -75,3 +83,11 @@ public:
 		}
 	}
 };
+int main()
+{
+	palindrome P;
+	P.construct("aaabbbbaaa");
+	P.print(1); // even length palindromes
+	P.print(0); // odd length palindromes
+	return 0;
+}
