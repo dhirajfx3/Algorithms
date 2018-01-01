@@ -178,3 +178,4 @@ public:
 		}
 	}
 };
+// faster implementation at https://sites.google.com/site/indy256/algo_cpp/hopcroft_karp
