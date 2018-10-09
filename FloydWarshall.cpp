@@ -15,7 +15,7 @@ class FloydWarshall
 	vector<vector<long long> > W;
 	int SIZE;
 public:
-	FloydWarshall(int N = 0) :W(N, vector<long long>(N, 1e9)), SIZE(N)
+	FloydWarshall(int N = 0) :W(N, vector<long long>(N, 1e18)), SIZE(N)
 	{
 		for (int i = 0; i < SIZE; i++)
 			W[i][i] = 0;
@@ -37,7 +37,7 @@ public:
 		{
 			if (i != Source)
 			{
-				if (W[Source][i] == 1e9)
+				if (W[Source][i]>5e17)
 					printf("-1 ");
 				else
 					printf("%lld ", W[Source][i]);
