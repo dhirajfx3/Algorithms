@@ -6,13 +6,9 @@ long long fast(long long a, long long b, long long pr)
 	while (b)
 	{
 		if (b & 1)
-		{
-			ans *= a;
-			ans %= pr;
-		}
+		  ans = (ans*a)%pr;
 		b >>= 1;
-		a *= a;
-		a %= pr;
+		a = (a*a)%pr;
 	}
 	return ans;
 }
