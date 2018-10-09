@@ -4,47 +4,38 @@
 #include <vector>
 #include <set>
 #include <algorithm>
+#define ve vector
 using namespace std;
-vector<vector<int> > adj, W;
-vector<int> sd;
 int SIZE;
-struct cmp
-{
-	bool operator()(const int &p, const int &q)const
-	{
-		if (sd[p] < sd[q])
-			return true;
-		else
-			if (sd[p] == sd[q])
-				return p < q;
-		return false;
-	}
-};
 class DIJKSTRA
 {
+	ve<ve<pair<int,int>>> adj;
+        ve<long long> sd;
 public:
 	bool add(int u, int v, int w = 1)
 	{
-		adj[u].push_back(v), W[u].push_back(w);
-		adj[v].push_back(u), W[v].push_back(w);
+		adj[u].push_back({v,w}) ;
+		adj[v].push_back({u,w})
 		return true;
 	}
 	void run(int Source) // Zero indexed
 	{
 		sd[Source] = 0;
-		set<int, cmp> S;
-		S.insert(Source);
+		set<pair<long long,int>> S;
+		S.insert({0,Source});
+		ve<bool> inq(adj.resize());
 		while (!S.empty())
 		{
-			int P = *S.begin();
+			auto P = *S.begin();
 			S.erase(S.begin());
-			for (int i = 0; i<adj[P].size(); i++)
+			inq[P.second]=true;
+			for (auto &x:adj[P.second])
 			{
-				if (sd[adj[P][i]]>sd[P] + W[P][i])
+				if (!inq[x.first] && sd[x.first]> x.second + P.first)
 				{
-					S.erase(adj[P][i]);
-					sd[adj[P][i]] = sd[P] + W[P][i];
-					S.insert(adj[P][i]);
+					S.erase({sd[x.first],x.first});
+					sd[x.first] = x.second+P.first;
+					S.insert({sd[x.first],x.first});
 				}
 			}
 		}
@@ -55,7 +46,7 @@ public:
 		run(y);
 		for (int i = 0; i<sd.size(); i++)
 			if (i != y)
-				cout << ((sd[i] == 1e9) ? -1 : sd[i]) << " ";
+				cout << ((sd[i] == 1e18) ? -1 : sd[i]) << " ";
 		cout << endl;
 		return;
 	}
