@@ -5,17 +5,19 @@ class bit
 {
 	// 1 based indexing only
 	ve<int> tree;
+	int n;
 	public:
-	void construct(int n)
+	void construct(int x)
 	{
-		tree.resize(n+1);
+		tree.resize(x+1);
+		n=x;
 	}
 	void add(int pos,int val)
 	{
 		while(pos<=n)
 		{
-			v[pos]+=val;
-			pos=pos+(pos&(-pos));
+			tree[pos]+=val;
+			pos=pos+(pos&(-pos));	
 		}
 	}
 	int sum(int pos)
@@ -23,8 +25,8 @@ class bit
 		int s=0;
 		while(pos>0)
 		{
-			s=s+v[pos];
-			pos=pos-(pos&pos);
+			s=s+tree[pos];
+			pos=pos-(pos&(-pos));
 		}
 		return s;
 	}
