@@ -1,35 +1,31 @@
 #include<vector>
+#define ve vector
 using namespace std;
-template<typename T>
-class BIT
+class bit
 {
-	int N;
-	vector<T> v;
-public:
-	BIT(int X):N(X),v(X+1){}
-	void update(T value,int pos)
+	// 1 based indexing only
+	ve<int> tree;
+	public:
+	void construct(int n)
 	{
-		pos++;
-		while(pos<=N)
+		tree.resize(n+1);
+	}
+	void add(int pos,int val)
+	{
+		while(pos<=n)
 		{
-			v[pos]+=value;
+			v[pos]+=val;
 			pos=pos+(pos&(-pos));
 		}
 	}
-	T get(int L,int R ) // get is 0 indexed query
+	int sum(int pos)
 	{
-		T obj=v[0];
-		++L,++R;
-		while(R>0)
+		int s=0;
+		while(pos>0)
 		{
-			obj=obj+v[R];
-			R=R-(R&(-R));
+			s=s+v[pos];
+			pos=pos-(pos&pos);
 		}
-		while(L>0)
-		{
-			obj=obj-v[L];
-			L=L-(L&(-L));
-		}
-		return obj;
+		return s;
 	}
 };
