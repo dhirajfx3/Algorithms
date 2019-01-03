@@ -20,6 +20,18 @@ public:
       invfact[i] = (invfact[i - 1] * (1LL * mod_inv[i])) % P;
     }
   }
+  long long fac(int k)
+  {
+	  return fact[k];
+  }
+  long long inv_fac(int k)
+  {
+	  return invfact[k];
+  }
+  long long inv(int k)
+  {
+	  return mod_inv[k];
+  }
   long long ncr(int n, int k)
   {
     if (k > n)
