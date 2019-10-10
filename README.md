@@ -9,7 +9,7 @@
 ## Centroid decomposition  <br>
 ## Hopcroft-Karp Algorithm for Maximum Bipartite Matching <br>
 ## Floyd Warshall Algorithm for all pairs shortest path <br>
-## Dijstra's Algorithm for single source shortest path <br>
+## Dijkstra's Algorithm for single source shortest path <br>
 ## Data Structure for Disjoint set union operation <br>
 ## Prim's and Kruskal's algorithm for Minimum spanning tree <br>
 ## Bellman Ford Algorithm for since source shortest path <br>
