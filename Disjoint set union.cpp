@@ -1,3 +1,7 @@
+/*
+Disjoint set union
+*/
+
 #include<vector>
 using namespace std;
 class DISJ
